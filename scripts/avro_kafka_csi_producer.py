@@ -13,8 +13,11 @@ from avro.io import BinaryEncoder
 
 if __name__ == "__main__":
 
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+
     config = configparser.ConfigParser()
-    config.read("config.ini")
+    config.read(os.path.join(current_dir, "config.ini"))
 
     kafka_live_brokers = config['Kafka']['consumer brokers'].split(';')
 
@@ -27,8 +30,6 @@ if __name__ == "__main__":
 
     local_brokers = config['Kafka']['producer brokers'].split(';')
 
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
     schema_file = os.path.join(parent_dir, "schemas", "customer_status_changes.avsc")
     schema = avro.schema.Parse(open(schema_file, "rb").read().decode("utf-8"))
     avro_writer = DatumWriter(schema)
