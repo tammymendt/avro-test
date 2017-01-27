@@ -7,7 +7,7 @@ from avro.io import DatumReader, DatumWriter
 if __name__ == "__main__":
 
     schema_file = os.path.join("schemas", "test.avsc")
-    serialized_data_file = os.path.join("serialized_data", "test.avro")
+    serialized_data_file = os.path.join("serialized_data", "avro_tutorial", "test.avro")
 
     schema = avro.schema.Parse(open(schema_file, "rb").read().decode("utf-8"))
 

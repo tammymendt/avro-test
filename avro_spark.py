@@ -16,7 +16,7 @@ if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.realpath(__file__))
 
     df = sql_context.read.format(SPARK_AVRO_FORMAT).load(
-        'file://' + os.path.join(current_dir, 'serialized_data', 'customer_status_changes'))
+        'file://' + os.path.join(current_dir, 'serialized_data', 'avro_tutorial'))
 
     df.show()
 
