@@ -18,7 +18,7 @@ if __name__ == "__main__":
     local_brokers = config['Kafka']['producer brokers'].split(';')
 
     consumer = KafkaConsumer(config['Kafka']['producer topic'],
-                             group_id='tmendt-local',
+                             group_id=config['Kafka']['consumer group'],
                              bootstrap_servers=local_brokers,
                              auto_offset_reset='earliest',
                              enable_auto_commit=False)

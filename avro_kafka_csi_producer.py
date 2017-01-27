@@ -19,7 +19,7 @@ if __name__ == "__main__":
     kafka_live_brokers = config['Kafka']['consumer brokers'].split(';')
 
     consumer = KafkaConsumer(config['Kafka']['consumer topic'],
-                             group_id='tmendt-local',
+                             group_id=config['Kafka']['consumer group'],
                              bootstrap_servers=kafka_live_brokers,
                              auto_offset_reset='earliest',
                              enable_auto_commit=False,
@@ -47,5 +47,5 @@ if __name__ == "__main__":
             print(message.value)
 
         i += 1
-        if i == 10:
+        if i == 300:
             break
