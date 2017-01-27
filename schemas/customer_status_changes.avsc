@@ -1,0 +1,44 @@
+{"namespace": "csi.avro",
+ "type": "record",
+ "name": "CustomerStatusChanges",
+ "fields": [
+     {"name": "order_nr", "type": ["string", "null"]},
+     {"name": "timestamp",  "type": "int"},
+     {"name": "country", "type": "string"},
+	 {"name": "old_status", "type": [
+		 {
+			 "type": "enum",
+			 "name": "old_status",
+			 "symbols": ["Prospect", "Active", "Former"]
+		 },
+		 "null"]},
+	 {"name": "new_status", "type":
+	 	{
+			 "type": "enum",
+			 "name": "new_status",
+			 "symbols": ["Prospect", "Active", "Former"]
+		 }
+	 },
+	 {"name": "customer_id", "type": "int"},
+	 {"name": "event", "type": ["string", "null"]},
+	 {"name": "type", "type": ["string", "null"]},
+	 {"name": "subscription",
+		 "type": [{
+			"type": "record",
+			 "name": "subscription",
+		 	 "fields": [
+				 {"name": "delivery_time", "type": ["string", "null"]},
+				 {"name": "canceled_at", "type": ["int", "null"]},
+				 {"name": "delivery_start", "type": ["string", "null"]},
+				 {"name": "unit_price", "type": "double"},
+				 {"name": "product_sku", "type": "string"},
+				 {"name": "voucher_code", "type": ["string", "null"]},
+				 {"name": "customer_id", "type": ["int", "null"]},
+				 {"name": "id", "type": "int"},
+				 {"name": "product_family", "type": ["string", "null"]},
+				 {"name": "paused_at", "type": ["int", "null"]}
+	 		]
+		 }, "null"]
+	 }
+ ]
+}
