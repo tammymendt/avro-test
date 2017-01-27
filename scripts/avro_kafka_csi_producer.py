@@ -7,7 +7,7 @@ from kafka import KafkaConsumer, KafkaProducer
 
 import avro.schema
 from avro.io import AvroTypeException
-from avro.io import DatumReader, DatumWriter
+from avro.io import DatumWriter
 from avro.io import BinaryEncoder
 
 
@@ -27,7 +27,9 @@ if __name__ == "__main__":
 
     local_brokers = config['Kafka']['producer brokers'].split(';')
 
-    schema_file = os.path.join("schemas", "customer_status_changes.avsc")
+    current_dir = os.path.dirname(os.path.realpath(__file__))
+    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+    schema_file = os.path.join(parent_dir, "schemas", "customer_status_changes.avsc")
     schema = avro.schema.Parse(open(schema_file, "rb").read().decode("utf-8"))
     avro_writer = DatumWriter(schema)
     bytes_writer = io.BytesIO()

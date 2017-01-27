@@ -14,9 +14,10 @@ if __name__ == "__main__":
     sql_context = SQLContext(sc)
 
     current_dir = os.path.dirname(os.path.realpath(__file__))
+    parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
 
     df = sql_context.read.format(SPARK_AVRO_FORMAT).load(
-        'file://' + os.path.join(current_dir, 'serialized_data', 'avro_tutorial'))
+        'file://' + os.path.join(parent_dir, 'serialized_data', 'avro_tutorial'))
 
     df.show()
 

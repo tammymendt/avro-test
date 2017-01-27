@@ -15,3 +15,5 @@ and on success, sends the serialized event to a configurable Kafka Producer.
 and prints the result.
 
 `flume.properties` is an example configuration for a [Flume](https://flume.apache.org/) agent consuming avro serialized events from Kafka and storing them to a file with a `.avro` extension. This Flume agent has not been successfully tested yet.
+
+`avro_spark.py` is a script that uses [Spark](http://spark.apache.org/) to read a file containing data serialized with Avro.
